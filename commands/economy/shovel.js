@@ -23,6 +23,7 @@ module.exports = {
             interaction.reply("Your shovel broke!");
         }
         player.cooldowns.shovel = Date.now() + 10000 - player.upgrades.shovel.speed * 1000;
+        await player.save();
 
 
     }

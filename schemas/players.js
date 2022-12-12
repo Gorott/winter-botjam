@@ -1,4 +1,10 @@
+const items = require("../data/items.js");
 const mongoose = require("mongoose");
+let list = {};
+
+items.forEach(item => {
+    list[item.id] = 0;
+})
 
 const schema = new mongoose.Schema({
     user: { type: String, unique: true, required: true },
@@ -7,8 +13,8 @@ const schema = new mongoose.Schema({
         bank: { type: Number, default: 0 },
     },
     inventory: {
-        snowballs: { type: Number, default: 0 },
-        shovel: { type: Number, default: 1 },
+        type: Object,
+        default: list,
     },
     upgrades: {
         shovel: {
@@ -21,5 +27,6 @@ const schema = new mongoose.Schema({
         shovel: { type: Number, default: 0 },
     }
 })
+
 
 module.exports = mongoose.model("players", schema);

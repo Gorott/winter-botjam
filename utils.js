@@ -105,10 +105,9 @@ function PickRandomItem() {
 }
 
 async function AddItem(player, itemID, amount) {
-    console.log(itemID)
-    console.log(amount)
-    player.set(`inventory.${itemID}`, amount);
-    console.log(player)
+
+    player.add(`inventory.${itemID}`, amount);
+
     const result = await player.save();
 
     if (result.error) {
